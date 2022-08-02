@@ -12,6 +12,7 @@ export async function getStaticProps() {
   return {
     props: {
       recipes: res.items, //passing the item data (the recipes from contentful) into the recipes prop
+      revalidate: 1,
     },
   };
 }
