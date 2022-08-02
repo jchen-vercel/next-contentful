@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     // this should be the actual path not a rewritten path
     // e.g. for "/blog/[slug]" this should be "/blog/post-1"
     let recipesSlug = req.body.fields.slug["en-US"];
+    console.log(recipesSlug);
     await res.revalidate("/");
     await res.revalidate(`/recipes/${recipesSlug}`);
     return res.json({ revalidated: true });
