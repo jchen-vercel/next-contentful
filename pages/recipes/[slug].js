@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
     return {
       redirect: {
         destination: "/",
-        permenant: false,
+        permanant: false,
       },
     };
   }
