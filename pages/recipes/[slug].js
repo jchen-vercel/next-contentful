@@ -32,6 +32,16 @@ export async function getStaticProps({ params }) {
     "fields.slug": params.slug,
   }); //tells contentful to only return where the contentful slug matches the slug inside the path that is currently being evaluated
 
+  if (!items.length) {
+    //if items array does not length then that means the recipe was not found
+    return {
+      redirect: {
+        destination: "/",
+        permenant: false,
+      },
+    };
+  }
+
   return {
     props: { recipe: items[0] },
     revalidate: 1,
