@@ -7,10 +7,12 @@ export default async function handler(req, res) {
   try {
     // this should be the actual path not a rewritten path
     // e.g. for "/blog/[slug]" this should be "/blog/post-1"
+
     let recipesSlug = req.body.fields.slug["en-US"];
     console.log(recipesSlug);
-    await res.revalidate("/");
     await res.revalidate(`/recipes/${recipesSlug}`);
+    await res.revalidate("/");
+
     return res.json({ revalidated: true });
   } catch (err) {
     // If there was an error, Next.js will continue
